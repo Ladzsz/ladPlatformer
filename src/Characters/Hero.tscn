@@ -9,7 +9,6 @@ size = Vector2(16, 16)
 [node name="Node2D" type="Node2D" unique_id=1984496537]
 
 [node name="Hero" type="CharacterBody2D" parent="." unique_id=630310517]
-position = Vector2(123, 78)
 scale = Vector2(3, 3)
 script = ExtResource("1_ei1ut")
 
