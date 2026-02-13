@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dfow60uh0dsv5"]
+
+[ext_resource type="Texture2D" uid="uid://csmjcc3vl0non" path="res://assets/enemy.png" id="1_7a2gn"]
+[ext_resource type="Script" uid="uid://dofgoo03i1pl6" path="res://grunts.gd" id="1_ibh7n"]
+
+[node name="Node2D" type="Node2D" unique_id=25196000]
+
+[node name="grunts" type="CharacterBody2D" parent="." unique_id=1048911769 groups=["enemies"]]
+position = Vector2(264, 119)
+collision_layer = 2
+script = ExtResource("1_ibh7n")
+
+[node name="grunt" type="Sprite2D" parent="grunts" unique_id=1432150159]
+position = Vector2(1.5258789e-05, 0)
+scale = Vector2(0.40740734, 0.4032258)
+texture = ExtResource("1_7a2gn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="grunts" unique_id=1285795857]
+polygon = PackedVector2Array(-13, -13, -5, -18, 5, -18, 13, -13, 18, -7, 21, -1, 22, 7, 18, 15, 8, 18, 0, 18, -8, 18, -15, 17, -20, 12, -22, 3, -19, -5, -17, -9)
+
+[node name="RayCast2D" type="RayCast2D" parent="grunts" unique_id=984294588]
+target_position = Vector2(3, 19)

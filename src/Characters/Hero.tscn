@@ -4,18 +4,32 @@
 [ext_resource type="Texture2D" uid="uid://tcr64br37pbg" path="res://assets/player.png" id="1_hrsmm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ei1ut"]
-size = Vector2(16, 16)
+size = Vector2(14, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_033i3"]
+size = Vector2(15.333334, 15.666668)
 
 [node name="Node2D" type="Node2D" unique_id=1984496537]
 
 [node name="Hero" type="CharacterBody2D" parent="." unique_id=630310517]
 scale = Vector2(3, 3)
+collision_mask = 3
 script = ExtResource("1_ei1ut")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hero" unique_id=1638423963]
-position = Vector2(0, 1)
+position = Vector2(-2.3841858e-07, 0.49999976)
 shape = SubResource("RectangleShape2D_ei1ut")
 
 [node name="Player" type="Sprite2D" parent="Hero" unique_id=1129220738]
 scale = Vector2(0.17708333, 0.18229166)
 texture = ExtResource("1_hrsmm")
+
+[node name="Area2D" type="Area2D" parent="Hero" unique_id=300986151]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hero/Area2D" unique_id=1699052409]
+position = Vector2(-2.3841858e-07, 1.1666667)
+shape = SubResource("RectangleShape2D_033i3")
+
+[connection signal="body_entered" from="Hero/Area2D" to="Hero" method="_on_area_2d_body_entered"]

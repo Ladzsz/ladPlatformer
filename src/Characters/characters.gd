@@ -1,12 +1,25 @@
 extends CharacterBody2D
 class_name Characters
 
+var baseSpeed = Vector2(300, 1000)
+var enemySpeed = 50
+var baseGravity = 980
+var max_health: int = 100
+var current_health: int
+
+func _ready():
+	current_health = max_health
+
+func take_damage(amount: int):
+	current_health -= amount
+
+	if current_health <= 0:
+		die()
+
+func die():
+	queue_free()  
+
 func _physics_process(delta: float) -> void:
-	
-	var baseSpeed = Vector2(300, 1000)
-	var baseGravity = 980
-	
-	velocity.x = Input.get_axis("ui_left", "ui_right") * baseSpeed.x
 	
 	velocity.y += baseGravity * delta
 	
