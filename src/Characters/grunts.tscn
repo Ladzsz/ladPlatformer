@@ -15,8 +15,8 @@ position = Vector2(1.5258789e-05, 0)
 scale = Vector2(0.40740734, 0.4032258)
 texture = ExtResource("1_7a2gn")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="grunts" unique_id=1285795857]
-polygon = PackedVector2Array(-13, -13, -5, -18, 5, -18, 13, -13, 18, -7, 21, -1, 22, 7, 18, 15, 8, 18, 0, 18, -8, 18, -15, 17, -20, 12, -22, 3, -19, -5, -17, -9)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="grunts" unique_id=396651905 groups=["enemies"]]
+polygon = PackedVector2Array(-13, -13, -6, -17, -1, -18, 5, -17, 9, -15, 13, -12, 18, -5, 21, 4, 18, 14, 11, 17, 3, 18, -7, 18, -16, 15, -19, 12, -21, 6, -19, -2, -16, -9)
 
 [node name="RayCast2D" type="RayCast2D" parent="grunts" unique_id=984294588]
 target_position = Vector2(3, 19)

@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Characters
 
 var baseSpeed = Vector2(300, 1000)
-var enemySpeed = 50
+var enemySpeed = 100
 var baseGravity = 980
 var max_health: int = 100
 var current_health: int
@@ -20,8 +20,5 @@ func die():
 	queue_free()  
 
 func _physics_process(delta: float) -> void:
-	
 	velocity.y += baseGravity * delta
-	
-	move_and_slide()
 	

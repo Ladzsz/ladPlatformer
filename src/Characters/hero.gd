@@ -22,3 +22,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _physics_process(delta: float) -> void:
 	getInput()
 	super._physics_process(delta)	
+	move_and_slide()
