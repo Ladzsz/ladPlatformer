@@ -1,6 +1,11 @@
 extends Characters
 
+#overiding die from characters
+func die():
+	await get_tree().create_timer(1.0).timeout
+	get_tree().reload_current_scene()
 
+#user input
 func getInput():
 	const JUMP_VELOCITY = -400.0
 	
@@ -10,14 +15,15 @@ func getInput():
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 	
+#checking if enemies colided with player body
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
- 		# If player is above enemy (stomping)
+		#hurt enemy if above
 		if velocity.y > 0 and global_position.y < body.global_position.y:
-			body.take_damage(100)  # Deal 100 damage
-			velocity.y = -200  # Bounce up
+			body.take_damage(100)  
+			velocity.y = -200  
 		else:
-			take_damage(100)  # Player takes damage from side collision	
+			take_damage(100)  
 			
 func _physics_process(delta: float) -> void:
 	getInput()

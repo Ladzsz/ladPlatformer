@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Characters
 
+#parent script to all characters
 var baseSpeed = Vector2(300, 1000)
 var enemySpeed = 100
 var baseGravity = 980
@@ -17,7 +18,7 @@ func take_damage(amount: int):
 		die()
 
 func die():
-	queue_free()  
+	queue_free()
 
 func _physics_process(delta: float) -> void:
 	velocity.y += baseGravity * delta

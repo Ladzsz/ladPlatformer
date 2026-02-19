@@ -10,9 +10,8 @@ size = Vector2(14, 15)
 size = Vector2(15.333334, 15.666668)
 
 [node name="Node2D" type="Node2D" unique_id=1984496537]
-position = Vector2(150, 154)
 
-[node name="Hero" type="CharacterBody2D" parent="." unique_id=630310517]
+[node name="Hero" type="CharacterBody2D" parent="." unique_id=630310517 groups=["pitDeath"]]
 scale = Vector2(3, 3)
 collision_mask = 3
 script = ExtResource("1_ei1ut")
@@ -26,6 +25,7 @@ scale = Vector2(0.17708333, 0.18229166)
 texture = ExtResource("1_hrsmm")
 
 [node name="Area2D" type="Area2D" parent="Hero" unique_id=300986151]
+position = Vector2(-0.33333206, 0)
 collision_layer = 0
 collision_mask = 2
 
@@ -34,10 +34,10 @@ position = Vector2(-2.3841858e-07, 1.1666667)
 shape = SubResource("RectangleShape2D_033i3")
 
 [node name="Camera2D" type="Camera2D" parent="Hero" unique_id=418353753]
-limit_left = -40
+limit_left = -1120
 limit_top = 0
 limit_right = 2240
-limit_bottom = 684
+limit_bottom = 560
 position_smoothing_enabled = true
 
 [connection signal="body_entered" from="Hero/Area2D" to="Hero" method="_on_area_2d_body_entered"]

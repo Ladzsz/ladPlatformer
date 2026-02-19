@@ -8,13 +8,11 @@ func _ready():
 	max_health = 100
 	current_health = 100
 	
-	
-	
 func flip_ray():
 	# Flip the RayCast's horizontal position so it stays in front of the enemy
 	ground_ray.position.x = abs(ground_ray.position.x) * direction
+	ground_ray.target_position.x = abs(ground_ray.target_position.x) * direction
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	# moving enemy to opposite direction if colliding with wall or edge
 	if not ground_ray.is_colliding() or is_on_wall():
