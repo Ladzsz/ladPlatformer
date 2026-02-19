@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://o7ga3rnhsp7w" path="res://src/Characters/Hero.tscn" id="2_4ckwk"]
 [ext_resource type="PackedScene" uid="uid://dfow60uh0dsv5" path="res://src/Characters/grunts.tscn" id="3_tts0k"]
 [ext_resource type="Script" uid="uid://c5bmao4sga0hy" path="res://src/Levels/deathpits.gd" id="4_4ckwk"]
+[ext_resource type="AudioStream" uid="uid://d1xbfsb5m45dy" path="res://assets/Final_Boss_-_ICarly_DS_OST_reupload_KLICKAUD.ogg" id="5_tts0k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tts0k"]
 size = Vector2(3443, 19)
@@ -46,5 +47,10 @@ script = ExtResource("4_4ckwk")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1547617365]
 position = Vector2(677.5, 643.5)
 shape = SubResource("RectangleShape2D_tts0k")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1649754106]
+position = Vector2(678, 105)
+stream = ExtResource("5_tts0k")
+autoplay = true
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
