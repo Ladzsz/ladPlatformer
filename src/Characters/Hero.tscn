@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://nmtw3rdsfaor" path="res://src/Characters/hero.gd" id="1_ei1ut"]
 [ext_resource type="Texture2D" uid="uid://tcr64br37pbg" path="res://assets/player.png" id="1_hrsmm"]
+[ext_resource type="Script" uid="uid://dqgni2i01fg3" path="res://src/Characters/deathscreen.gd" id="3_033i3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ei1ut"]
 size = Vector2(14, 15)
@@ -40,5 +41,57 @@ limit_right = 2240
 limit_bottom = 560
 position_smoothing_enabled = true
 
+[node name="CanvasLayer" type="CanvasLayer" parent="Hero" unique_id=850999100]
+
+[node name="Control" type="Control" parent="Hero/CanvasLayer" unique_id=1564071696 groups=["death_screen"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_033i3")
+
+[node name="ColorRect" type="ColorRect" parent="Hero/CanvasLayer/Control" unique_id=8450118]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_right = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Hero/CanvasLayer/Control" unique_id=105244200]
+layout_mode = 0
+offset_left = 507.0
+offset_top = 113.0
+offset_right = 738.0
+offset_bottom = 136.0
+text = "You died the circles have Won"
+
+[node name="respawn" type="Button" parent="Hero/CanvasLayer/Control" unique_id=1832836432]
+process_mode = 3
+layout_mode = 0
+offset_left = 798.0
+offset_top = 173.0
+offset_right = 876.0
+offset_bottom = 204.0
+text = "Respawn"
+
+[node name="quit" type="Button" parent="Hero/CanvasLayer/Control" unique_id=80874060]
+process_mode = 3
+layout_mode = 0
+offset_left = 453.0
+offset_top = 172.0
+offset_right = 495.0
+offset_bottom = 203.0
+text = "Quit"
+
 [connection signal="body_entered" from="Hero/Area2D" to="Hero" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Hero/Area2D" to="Hero" method="_on_area_2d_body_exited"]
+[connection signal="pressed" from="Hero/CanvasLayer/Control/respawn" to="Hero/CanvasLayer/Control" method="_on_respawn_pressed"]
+[connection signal="pressed" from="Hero/CanvasLayer/Control/quit" to="Hero/CanvasLayer/Control" method="_on_quit_pressed"]
