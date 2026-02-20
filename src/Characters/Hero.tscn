@@ -1,29 +1,105 @@
 [gd_scene format=3 uid="uid://o7ga3rnhsp7w"]
 
 [ext_resource type="Script" uid="uid://nmtw3rdsfaor" path="res://src/Characters/hero.gd" id="1_ei1ut"]
-[ext_resource type="Texture2D" uid="uid://tcr64br37pbg" path="res://assets/player.png" id="1_hrsmm"]
+[ext_resource type="Texture2D" uid="uid://dagpl28l0vah7" path="res://newassets/kenney_platformer-pack-redux/PNG/Players/128x256/Beige/alienBeige_stand.png" id="2_033i3"]
 [ext_resource type="Script" uid="uid://dqgni2i01fg3" path="res://src/Characters/deathscreen.gd" id="3_033i3"]
+[ext_resource type="Texture2D" uid="uid://b127ldr0i0d75" path="res://newassets/kenney_platformer-pack-redux/PNG/Players/128x256/Beige/alienBeige_duck.png" id="3_vuohq"]
+[ext_resource type="Texture2D" uid="uid://dok0lqd5rl68i" path="res://newassets/kenney_platformer-pack-redux/PNG/Players/128x256/Beige/alienBeige_jump.png" id="4_cqarb"]
+[ext_resource type="Texture2D" uid="uid://dgo0wnuomhedi" path="res://newassets/kenney_platformer-pack-redux/PNG/Players/128x256/Beige/alienBeige_walk1.png" id="4_h0kvb"]
+[ext_resource type="Texture2D" uid="uid://bv6qr6cq31m3f" path="res://newassets/kenney_platformer-pack-redux/PNG/Players/128x256/Beige/alienBeige_walk2.png" id="5_cqarb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ei1ut"]
-size = Vector2(14, 15)
+size = Vector2(18, 29.166668)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_033i3"]
-size = Vector2(15.333334, 15.666668)
+size = Vector2(18.667, 38.833)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vuohq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_vuohq")
+}],
+"loop": true,
+"name": &"duck",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_033i3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_cqarb")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_h0kvb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cqarb")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[sub_resource type="Animation" id="Animation_vuohq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D/CollisionShape2D:shape:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(18.667, 38.833)]
+}
+
+[sub_resource type="Animation" id="Animation_fixp7"]
+resource_name = "duck"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D/CollisionShape2D:shape:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(18.667, 38.833), Vector2(18.667, 19.417)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vjw1a"]
+_data = {
+&"RESET": SubResource("Animation_vuohq"),
+&"duck": SubResource("Animation_fixp7")
+}
 
 [node name="Node2D" type="Node2D" unique_id=1984496537]
 
 [node name="Hero" type="CharacterBody2D" parent="." unique_id=630310517 groups=["pitDeath"]]
+position = Vector2(90, -137)
 scale = Vector2(3, 3)
 collision_mask = 3
 script = ExtResource("1_ei1ut")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hero" unique_id=1638423963]
-position = Vector2(-2.3841858e-07, 0.49999976)
+position = Vector2(52.333336, 5.416668)
 shape = SubResource("RectangleShape2D_ei1ut")
-
-[node name="Player" type="Sprite2D" parent="Hero" unique_id=1129220738]
-scale = Vector2(0.17708333, 0.18229166)
-texture = ExtResource("1_hrsmm")
 
 [node name="Area2D" type="Area2D" parent="Hero" unique_id=300986151]
 position = Vector2(-0.33333206, 0)
@@ -31,7 +107,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hero/Area2D" unique_id=1699052409]
-position = Vector2(-2.3841858e-07, 1.1666667)
+position = Vector2(52.666668, 2.916668)
 shape = SubResource("RectangleShape2D_033i3")
 
 [node name="Camera2D" type="Camera2D" parent="Hero" unique_id=418353753]
@@ -90,6 +166,15 @@ offset_top = 172.0
 offset_right = 495.0
 offset_bottom = 203.0
 text = "Quit"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hero" unique_id=96841667]
+position = Vector2(52, -9.666672)
+scale = Vector2(0.2539063, 0.23046876)
+sprite_frames = SubResource("SpriteFrames_vuohq")
+animation = &"idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hero" unique_id=769280182]
+libraries/ = SubResource("AnimationLibrary_vjw1a")
 
 [connection signal="body_entered" from="Hero/Area2D" to="Hero" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Hero/Area2D" to="Hero" method="_on_area_2d_body_exited"]
