@@ -2,8 +2,13 @@ extends Characters
 
 #overiding die from characters
 func die():
-	await get_tree().create_timer(1.0).timeout
-	get_tree().reload_current_scene()
+	print("hero die")
+	modulate = Color.RED
+	var tween = create_tween()
+	tween.tween_property(self, "scale", Vector2.ZERO, 0.2)
+	await tween.finished
+	await get_tree().create_timer(3.0).timeout
+	get_tree().reload_current_scene() 
 
 #user input
 func getInput():
@@ -19,13 +24,13 @@ func getInput():
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
 		#hurt enemy if above
-		if velocity.y > 0 and global_position.y < body.global_position.y:
-			body.take_damage(100)  
-			velocity.y = -200  
+		if global_position.y < body.global_position.y - 10 and velocity.y > -100:
+			body.take_damage(100)
+			velocity.y = -200
 		else:
-			take_damage(100)  
-			
+			take_damage(100)
+
 func _physics_process(delta: float) -> void:
 	getInput()
-	super._physics_process(delta)	
+	super._physics_process(delta)
 	move_and_slide()

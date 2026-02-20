@@ -1,7 +1,13 @@
 [gd_scene format=3 uid="uid://dfow60uh0dsv5"]
 
 [ext_resource type="Texture2D" uid="uid://csmjcc3vl0non" path="res://assets/enemy.png" id="1_7a2gn"]
-[ext_resource type="Script" uid="uid://dofgoo03i1pl6" path="res://grunts.gd" id="1_ibh7n"]
+[ext_resource type="Script" uid="uid://dofgoo03i1pl6" path="res://src/Characters/grunts.gd" id="1_ibh7n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ibh7n"]
+size = Vector2(34, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gstte"]
+size = Vector2(34, 29)
 
 [node name="Node2D" type="Node2D" unique_id=25196000]
 
@@ -15,8 +21,15 @@ position = Vector2(1.5258789e-05, 0)
 scale = Vector2(0.40740734, 0.4032258)
 texture = ExtResource("1_7a2gn")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="grunts" unique_id=396651905]
-polygon = PackedVector2Array(-13, -13, -6, -17, -1, -18, 5, -17, 9, -15, 13, -12, 18, -5, 21, 4, 18, 14, 11, 17, 3, 18, -7, 18, -16, 15, -19, 12, -21, 6, -19, -2, -16, -9)
-
 [node name="RayCast2D" type="RayCast2D" parent="grunts" unique_id=984294588]
-target_position = Vector2(13, 19)
+position = Vector2(16.9, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grunts" unique_id=2094696815]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_ibh7n")
+
+[node name="hitbox" type="Area2D" parent="grunts" unique_id=1841916283]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grunts/hitbox" unique_id=604840913]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_gstte")

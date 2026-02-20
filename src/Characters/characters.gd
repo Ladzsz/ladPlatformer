@@ -18,6 +18,11 @@ func take_damage(amount: int):
 		die()
 
 func die():
+	print("enemy die")
+	modulate = Color.RED
+	var tween = create_tween()
+	tween.tween_property(self, "scale", Vector2.ZERO, 0.2)
+	await tween.finished
 	queue_free()
 
 func _physics_process(delta: float) -> void:

@@ -41,3 +41,4 @@ limit_bottom = 560
 position_smoothing_enabled = true
 
 [connection signal="body_entered" from="Hero/Area2D" to="Hero" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Hero/Area2D" to="Hero" method="_on_area_2d_body_exited"]
