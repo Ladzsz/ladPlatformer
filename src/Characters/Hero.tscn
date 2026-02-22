@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dok0lqd5rl68i" path="res://newassets/kenney_platformer-pack-redux/PNG/Players/128x256/Beige/alienBeige_jump.png" id="4_cqarb"]
 [ext_resource type="Texture2D" uid="uid://dgo0wnuomhedi" path="res://newassets/kenney_platformer-pack-redux/PNG/Players/128x256/Beige/alienBeige_walk1.png" id="4_h0kvb"]
 [ext_resource type="Texture2D" uid="uid://bv6qr6cq31m3f" path="res://newassets/kenney_platformer-pack-redux/PNG/Players/128x256/Beige/alienBeige_walk2.png" id="5_cqarb"]
+[ext_resource type="Texture2D" uid="uid://cx43xhmsv8qkh" path="res://newassets/kenney_platformer-pack-redux/PNG/Players/128x256/Beige/alienBeige_front.png" id="5_fixp7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ei1ut"]
 size = Vector2(17.666664, 28.166668)
@@ -25,8 +26,11 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 12.0,
 "texture": ExtResource("2_033i3")
+}, {
+"duration": 6.0,
+"texture": ExtResource("5_fixp7")
 }],
 "loop": true,
 "name": &"idle",
@@ -153,7 +157,8 @@ text = "Quit"
 position = Vector2(52, -9.666672)
 scale = Vector2(0.2539063, 0.23046876)
 sprite_frames = SubResource("SpriteFrames_vuohq")
-animation = &"walk"
+animation = &"idle"
+frame_progress = 0.94461423
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Hero" unique_id=769280182]
 libraries/ = SubResource("AnimationLibrary_vjw1a")
