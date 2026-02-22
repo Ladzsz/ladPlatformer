@@ -17,8 +17,8 @@ func take_damage(amount: int):
 	if current_health <= 0:
 		die()
 
-func die():
-	print("enemy die")
+func die(): 
+	$AnimatedSprite2D.play("death")
 	modulate = Color.RED
 	var tween = create_tween()
 	tween.tween_property(self, "scale", Vector2.ZERO, 0.2)

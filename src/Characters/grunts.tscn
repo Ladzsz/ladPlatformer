@@ -18,7 +18,7 @@ animations = [{
 "texture": ExtResource("2_pjtqo")
 }],
 "loop": true,
-"name": &"dead",
+"name": &"death",
 "speed": 5.0
 }, {
 "frames": [{
@@ -32,6 +32,9 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("4_p3bce")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f1yk7")
 }],
 "loop": true,
 "name": &"walk",
@@ -67,7 +70,8 @@ shape = SubResource("RectangleShape2D_gstte")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="grunts" unique_id=1616573783]
 scale = Vector2(0.390625, 0.4140625)
 sprite_frames = SubResource("SpriteFrames_vc17m")
-animation = &"idle"
+animation = &"death"
+frame_progress = 0.69319916
 
 [node name="head hurtbox" type="Area2D" parent="grunts" unique_id=30743745 groups=["enemyHead"]]
 collision_layer = 4
