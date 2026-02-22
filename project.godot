@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 enemies=""
 pitDeath=""
 death_screen=""
+enemyHead=""
 
 [physics]
 

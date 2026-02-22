@@ -9,10 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://bv6qr6cq31m3f" path="res://newassets/kenney_platformer-pack-redux/PNG/Players/128x256/Beige/alienBeige_walk2.png" id="5_cqarb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ei1ut"]
-size = Vector2(18, 29.166668)
+size = Vector2(17.666664, 28.166668)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_033i3"]
-size = Vector2(18.667, 38.833)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vuohq"]
+size = Vector2(19.666666, 30.333334)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vuohq"]
 animations = [{
@@ -54,34 +54,10 @@ animations = [{
 
 [sub_resource type="Animation" id="Animation_vuohq"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Area2D/CollisionShape2D:shape:size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(18.667, 38.833)]
-}
 
 [sub_resource type="Animation" id="Animation_fixp7"]
 resource_name = "duck"
 length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Area2D/CollisionShape2D:shape:size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(18.667, 38.833), Vector2(18.667, 19.417)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vjw1a"]
 _data = {
@@ -89,26 +65,32 @@ _data = {
 &"duck": SubResource("Animation_fixp7")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fixp7"]
+size = Vector2(18.999994, 2.5000002)
+
 [node name="Node2D" type="Node2D" unique_id=1984496537]
 
 [node name="Hero" type="CharacterBody2D" parent="." unique_id=630310517 groups=["pitDeath"]]
 position = Vector2(90, -137)
 scale = Vector2(3, 3)
-collision_mask = 3
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_ei1ut")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hero" unique_id=1638423963]
-position = Vector2(52.333336, 5.416668)
+position = Vector2(52.500015, 4.916668)
 shape = SubResource("RectangleShape2D_ei1ut")
+debug_color = Color(0.50541544, 3.85046e-07, 0.2900922, 0.41960785)
 
-[node name="Area2D" type="Area2D" parent="Hero" unique_id=300986151]
+[node name="main hitbox" type="Area2D" parent="Hero" unique_id=300986151]
 position = Vector2(-0.33333206, 0)
-collision_layer = 0
-collision_mask = 2
+collision_layer = 2
+collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hero/Area2D" unique_id=1699052409]
-position = Vector2(52.666668, 2.916668)
-shape = SubResource("RectangleShape2D_033i3")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hero/main hitbox" unique_id=876186418]
+position = Vector2(52.83334, 3.833332)
+shape = SubResource("RectangleShape2D_vuohq")
+debug_color = Color(0.7436938, 0.46455193, 0, 0.41960785)
 
 [node name="Camera2D" type="Camera2D" parent="Hero" unique_id=418353753]
 limit_left = -1120
@@ -171,12 +153,21 @@ text = "Quit"
 position = Vector2(52, -9.666672)
 scale = Vector2(0.2539063, 0.23046876)
 sprite_frames = SubResource("SpriteFrames_vuohq")
-animation = &"idle"
+animation = &"walk"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Hero" unique_id=769280182]
 libraries/ = SubResource("AnimationLibrary_vjw1a")
 
-[connection signal="body_entered" from="Hero/Area2D" to="Hero" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Hero/Area2D" to="Hero" method="_on_area_2d_body_exited"]
+[node name="jump stomp" type="Area2D" parent="Hero" unique_id=1792235675]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hero/jump stomp" unique_id=876462571]
+position = Vector2(52.500015, 18.416668)
+shape = SubResource("RectangleShape2D_fixp7")
+
+[connection signal="body_entered" from="Hero/main hitbox" to="Hero" method="_on_area_2d_body_entered"]
 [connection signal="pressed" from="Hero/CanvasLayer/Control/respawn" to="Hero/CanvasLayer/Control" method="_on_respawn_pressed"]
 [connection signal="pressed" from="Hero/CanvasLayer/Control/quit" to="Hero/CanvasLayer/Control" method="_on_quit_pressed"]
+[connection signal="area_entered" from="Hero/jump stomp" to="Hero" method="_on_jump_stomp_area_entered"]
+[connection signal="body_entered" from="Hero/jump stomp" to="Hero" method="_on_jump_stomp_body_entered"]

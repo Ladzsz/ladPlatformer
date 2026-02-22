@@ -1,35 +1,78 @@
 [gd_scene format=3 uid="uid://dfow60uh0dsv5"]
 
-[ext_resource type="Texture2D" uid="uid://csmjcc3vl0non" path="res://assets/enemy.png" id="1_7a2gn"]
 [ext_resource type="Script" uid="uid://dofgoo03i1pl6" path="res://src/Characters/grunts.gd" id="1_ibh7n"]
+[ext_resource type="Texture2D" uid="uid://0logmo30nr4e" path="res://newassets/kenney_platformer-pack-redux/PNG/Enemies/slimeBlock_dead.png" id="2_pjtqo"]
+[ext_resource type="Texture2D" uid="uid://d2nqfipti4soa" path="res://newassets/kenney_platformer-pack-redux/PNG/Enemies/slimeBlock.png" id="3_f1yk7"]
+[ext_resource type="Texture2D" uid="uid://dadf3nvw0yuh" path="res://newassets/kenney_platformer-pack-redux/PNG/Enemies/slimeBlock_move.png" id="4_p3bce"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ibh7n"]
-size = Vector2(34, 29)
+size = Vector2(34, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gstte"]
-size = Vector2(34, 29)
+size = Vector2(34, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vc17m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pjtqo")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_f1yk7")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_p3bce")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pjtqo"]
+size = Vector2(32, 3)
 
 [node name="Node2D" type="Node2D" unique_id=25196000]
 
 [node name="grunts" type="CharacterBody2D" parent="." unique_id=1048911769 groups=["enemies", "pitDeath"]]
 position = Vector2(264, 119)
-collision_layer = 2
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_ibh7n")
 
-[node name="grunt" type="Sprite2D" parent="grunts" unique_id=1432150159]
-position = Vector2(1.5258789e-05, 0)
-scale = Vector2(0.40740734, 0.4032258)
-texture = ExtResource("1_7a2gn")
-
 [node name="RayCast2D" type="RayCast2D" parent="grunts" unique_id=984294588]
-position = Vector2(16.9, 0)
+position = Vector2(15, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="grunts" unique_id=2094696815]
-position = Vector2(0, 5)
+position = Vector2(0, 11.5)
 shape = SubResource("RectangleShape2D_ibh7n")
 
 [node name="hitbox" type="Area2D" parent="grunts" unique_id=1841916283]
+collision_layer = 4
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="grunts/hitbox" unique_id=604840913]
-position = Vector2(0, 4.5)
+position = Vector2(0, 9)
 shape = SubResource("RectangleShape2D_gstte")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="grunts" unique_id=1616573783]
+scale = Vector2(0.390625, 0.4140625)
+sprite_frames = SubResource("SpriteFrames_vc17m")
+animation = &"idle"
+
+[node name="head hurtbox" type="Area2D" parent="grunts" unique_id=30743745 groups=["enemyHead"]]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grunts/head hurtbox" unique_id=1452623857]
+position = Vector2(0, -9.5)
+shape = SubResource("RectangleShape2D_pjtqo")

@@ -19,49 +19,45 @@ func getInput():
 	
 	velocity.x = Input.get_axis("ui_left", "ui_right") * baseSpeed.x
 	
-	# Handle Jump if on floor.
+	# Handle Jump
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		$AnimatedSprite2D.play("jump")
 		velocity.y = JUMP_VELOCITY
-	elif not is_on_floor():
-		$AnimatedSprite2D.play("jump")
-		
-	#walk animation
-	if not is_ducking:
-		if abs(velocity.x) > 0:
-			$AnimatedSprite2D.play("walk")
-		else:
-			$AnimatedSprite2D.play("idle")
 
+	# Flip sprite
 	if velocity.x < 0:
 		$AnimatedSprite2D.flip_h = true
 	elif velocity.x > 0:
 		$AnimatedSprite2D.flip_h = false
-		
-	#duck animation
+
+	# Duck input
 	if Input.is_action_pressed("ui_down") and is_on_floor():
 		if not is_ducking:
 			is_ducking = true
-			$AnimatedSprite2D.play("duck")
 			$AnimationPlayer.play("duck")
 	else:
 		if is_ducking:
 			is_ducking = false
 			$AnimationPlayer.play_backwards("duck")
-			$AnimatedSprite2D.play("idle")
-		
-	
-		
-	
-#checking if enemies colided with player body
+
+	# Animations
+	if not is_on_floor():
+		$AnimatedSprite2D.play("jump")
+	elif is_ducking:
+		$AnimatedSprite2D.play("duck")
+	elif abs(velocity.x) > 0:
+		$AnimatedSprite2D.play("walk")
+	else:
+		$AnimatedSprite2D.play("idle")
+			
+#players damage box
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("enemies"):
-		#hurt enemy if above
-		if global_position.y < body.global_position.y - 10 and velocity.y > -100:
-			body.take_damage(100)
-			velocity.y = -200
-		else:
+	if body.is_in_group("enemies") and velocity.y <= 0:
 			take_damage(100)
+
+func _on_jump_stomp_area_entered(area: Area2D) -> void:
+	if area.is_in_group("enemyHead") and velocity.y >= 0:
+		area.get_parent().take_damage(100)
+		velocity.y = -250
 
 func _physics_process(delta: float) -> void:
 	getInput()
