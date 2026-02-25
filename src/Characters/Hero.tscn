@@ -97,7 +97,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fixp7"]
 size = Vector2(18.999994, 2.5000002)
 
-[node name="Node2D" type="Node2D" unique_id=1984496537]
+[node name="Hero" type="Node2D" unique_id=1984496537]
 
 [node name="Hero" type="CharacterBody2D" parent="." unique_id=630310517 groups=["pitDeath"]]
 position = Vector2(90, -137)
@@ -124,7 +124,7 @@ debug_color = Color(0.7436938, 0.46455193, 0, 0.41960785)
 [node name="Camera2D" type="Camera2D" parent="Hero" unique_id=418353753]
 limit_left = -1120
 limit_top = 0
-limit_right = 3000
+limit_right = 2880
 limit_bottom = 560
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Hero" unique_id=850999100]

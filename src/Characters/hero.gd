@@ -41,7 +41,6 @@ func getInput():
 		
 #players damage box
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print("Hit by: ", body.name, " | Groups: ", body.get_groups(), " | velocity.y: ", velocity.y)
 	if body.is_in_group("enemies") and velocity.y <= 0:
 		take_damage(100)
 
