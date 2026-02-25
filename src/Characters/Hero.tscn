@@ -1,73 +1,98 @@
 [gd_scene format=3 uid="uid://o7ga3rnhsp7w"]
 
 [ext_resource type="Script" uid="uid://nmtw3rdsfaor" path="res://src/Characters/hero.gd" id="1_ei1ut"]
-[ext_resource type="Texture2D" uid="uid://dagpl28l0vah7" path="res://newassets/kenney_platformer-pack-redux/PNG/Players/128x256/Beige/alienBeige_stand.png" id="2_033i3"]
 [ext_resource type="Script" uid="uid://dqgni2i01fg3" path="res://src/Characters/deathscreen.gd" id="3_033i3"]
-[ext_resource type="Texture2D" uid="uid://b127ldr0i0d75" path="res://newassets/kenney_platformer-pack-redux/PNG/Players/128x256/Beige/alienBeige_duck.png" id="3_vuohq"]
-[ext_resource type="Texture2D" uid="uid://dok0lqd5rl68i" path="res://newassets/kenney_platformer-pack-redux/PNG/Players/128x256/Beige/alienBeige_jump.png" id="4_cqarb"]
-[ext_resource type="Texture2D" uid="uid://dgo0wnuomhedi" path="res://newassets/kenney_platformer-pack-redux/PNG/Players/128x256/Beige/alienBeige_walk1.png" id="4_h0kvb"]
-[ext_resource type="Texture2D" uid="uid://bv6qr6cq31m3f" path="res://newassets/kenney_platformer-pack-redux/PNG/Players/128x256/Beige/alienBeige_walk2.png" id="5_cqarb"]
-[ext_resource type="Texture2D" uid="uid://cx43xhmsv8qkh" path="res://newassets/kenney_platformer-pack-redux/PNG/Players/128x256/Beige/alienBeige_front.png" id="5_fixp7"]
+[ext_resource type="Texture2D" uid="uid://ba2wa6jw77aws" path="res://newassets/Vinicio - Copy/Look down/Vinicio lookDown.png" id="3_k7isf"]
+[ext_resource type="Texture2D" uid="uid://7vawom42h3hj" path="res://newassets/Vinicio - Copy/idle/Vinicio idle 1.png" id="4_rbahl"]
+[ext_resource type="Texture2D" uid="uid://k7cxdyeg1nlf" path="res://newassets/Vinicio - Copy/idle/Vinicio idle 2 (2).png" id="5_sayaq"]
+[ext_resource type="Texture2D" uid="uid://b138j0u4ynljy" path="res://newassets/Vinicio - Copy/idle/Vinicio idle 3.png" id="6_liuvl"]
+[ext_resource type="Texture2D" uid="uid://dyrm2kldclcs5" path="res://newassets/Vinicio - Copy/idle/Vinicio idle 4.png" id="7_t7ssv"]
+[ext_resource type="Texture2D" uid="uid://b17cr4bkp8nsd" path="res://newassets/Vinicio - Copy/jump/Vinicio jump 1.png" id="8_yrquk"]
+[ext_resource type="Texture2D" uid="uid://gtot3654colc" path="res://newassets/Vinicio - Copy/walk/Vinicio walk 1.png" id="9_sayaq"]
+[ext_resource type="Texture2D" uid="uid://ddfhtmbyaea5d" path="res://newassets/Vinicio - Copy/jump/Vinicio jump 2.png" id="9_uh15n"]
+[ext_resource type="Texture2D" uid="uid://b2h54lmdpwlb8" path="res://newassets/Vinicio - Copy/jump/Vinicio jump 3.png" id="10_c8uyj"]
+[ext_resource type="Texture2D" uid="uid://cyq4mwnkeg1pl" path="res://newassets/Vinicio - Copy/walk/Vinicio walk 2.png" id="10_liuvl"]
+[ext_resource type="Texture2D" uid="uid://4usdud0yj740" path="res://newassets/Vinicio - Copy/jump/Vinicio jump 4.png" id="11_1nauc"]
+[ext_resource type="Texture2D" uid="uid://c021wkc0mbpcl" path="res://newassets/Vinicio - Copy/walk/Vinicio walk 3.png" id="11_t7ssv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ei1ut"]
-size = Vector2(17.666664, 28.166668)
+size = Vector2(15.333323, 25.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vuohq"]
-size = Vector2(19.666666, 30.333334)
+size = Vector2(16.333344, 22.333336)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vuohq"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_vuohq")
+"texture": ExtResource("3_k7isf")
 }],
 "loop": true,
-"name": &"duck",
+"name": &"down",
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 12.0,
-"texture": ExtResource("2_033i3")
+"duration": 0.1,
+"texture": ExtResource("10_c8uyj")
 }, {
-"duration": 6.0,
-"texture": ExtResource("5_fixp7")
+"duration": 0.1,
+"texture": ExtResource("11_1nauc")
+}],
+"loop": false,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_rbahl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_sayaq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_liuvl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_t7ssv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_liuvl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_sayaq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rbahl")
 }],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_cqarb")
+"duration": 0.1,
+"texture": ExtResource("8_yrquk")
+}, {
+"duration": 0.2,
+"texture": ExtResource("9_uh15n")
 }],
-"loop": true,
+"loop": false,
 "name": &"jump",
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_h0kvb")
+"duration": 0.1,
+"texture": ExtResource("9_sayaq")
 }, {
-"duration": 1.0,
-"texture": ExtResource("5_cqarb")
+"duration": 0.1,
+"texture": ExtResource("10_liuvl")
+}, {
+"duration": 0.1,
+"texture": ExtResource("11_t7ssv")
 }],
 "loop": true,
 "name": &"walk",
-"speed": 8.0
+"speed": 5.0
 }]
-
-[sub_resource type="Animation" id="Animation_vuohq"]
-length = 0.001
-
-[sub_resource type="Animation" id="Animation_fixp7"]
-resource_name = "duck"
-length = 0.1
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_vjw1a"]
-_data = {
-&"RESET": SubResource("Animation_vuohq"),
-&"duck": SubResource("Animation_fixp7")
-}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fixp7"]
 size = Vector2(18.999994, 2.5000002)
@@ -82,7 +107,7 @@ collision_mask = 5
 script = ExtResource("1_ei1ut")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hero" unique_id=1638423963]
-position = Vector2(52.500015, 4.916668)
+position = Vector2(52.333344, 3.583332)
 shape = SubResource("RectangleShape2D_ei1ut")
 debug_color = Color(0.50541544, 3.85046e-07, 0.2900922, 0.41960785)
 
@@ -92,18 +117,18 @@ collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hero/main hitbox" unique_id=876186418]
-position = Vector2(52.83334, 3.833332)
+position = Vector2(52.500004, 3.5)
 shape = SubResource("RectangleShape2D_vuohq")
 debug_color = Color(0.7436938, 0.46455193, 0, 0.41960785)
 
 [node name="Camera2D" type="Camera2D" parent="Hero" unique_id=418353753]
 limit_left = -1120
 limit_top = 0
-limit_right = 2240
+limit_right = 3000
 limit_bottom = 560
-position_smoothing_enabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Hero" unique_id=850999100]
+visible = false
 
 [node name="Control" type="Control" parent="Hero/CanvasLayer" unique_id=1564071696 groups=["death_screen"]]
 layout_mode = 3
@@ -154,21 +179,20 @@ offset_bottom = 203.0
 text = "Quit"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hero" unique_id=96841667]
-position = Vector2(52, -9.666672)
-scale = Vector2(0.2539063, 0.23046876)
+texture_filter = 1
+position = Vector2(52.666664, 3.999999)
+scale = Vector2(1.34375, 1.5520835)
 sprite_frames = SubResource("SpriteFrames_vuohq")
-animation = &"idle"
-frame_progress = 0.94461423
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Hero" unique_id=769280182]
-libraries/ = SubResource("AnimationLibrary_vjw1a")
+animation = &"walk"
+frame_progress = 0.48909563
+speed_scale = 0.1
 
 [node name="jump stomp" type="Area2D" parent="Hero" unique_id=1792235675]
 collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hero/jump stomp" unique_id=876462571]
-position = Vector2(52.500015, 18.416668)
+position = Vector2(52.333332, 16.000002)
 shape = SubResource("RectangleShape2D_fixp7")
 
 [connection signal="body_entered" from="Hero/main hitbox" to="Hero" method="_on_area_2d_body_entered"]

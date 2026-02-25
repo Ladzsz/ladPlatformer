@@ -1,40 +1,30 @@
 [gd_scene format=3 uid="uid://dfow60uh0dsv5"]
 
 [ext_resource type="Script" uid="uid://dofgoo03i1pl6" path="res://src/Characters/grunts.gd" id="1_ibh7n"]
-[ext_resource type="Texture2D" uid="uid://0logmo30nr4e" path="res://newassets/kenney_platformer-pack-redux/PNG/Enemies/slimeBlock_dead.png" id="2_pjtqo"]
-[ext_resource type="Texture2D" uid="uid://d2nqfipti4soa" path="res://newassets/kenney_platformer-pack-redux/PNG/Enemies/slimeBlock.png" id="3_f1yk7"]
-[ext_resource type="Texture2D" uid="uid://dadf3nvw0yuh" path="res://newassets/kenney_platformer-pack-redux/PNG/Enemies/slimeBlock_move.png" id="4_p3bce"]
+[ext_resource type="Texture2D" uid="uid://c8hj1bekd52ls" path="res://newassets/kenney_pixel-platformer/Tilemap/tilemap-characters.png" id="2_ibh7n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ibh7n"]
-size = Vector2(34, 31)
+size = Vector2(34, 25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gstte"]
-size = Vector2(34, 32)
+size = Vector2(34, 26)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_vc17m"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gstte"]
+atlas = ExtResource("2_ibh7n")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjtqo"]
+atlas = ExtResource("2_ibh7n")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f1yk7"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_pjtqo")
-}],
-"loop": true,
-"name": &"death",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_f1yk7")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_p3bce")
+"texture": SubResource("AtlasTexture_gstte")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_f1yk7")
+"texture": SubResource("AtlasTexture_pjtqo")
 }],
 "loop": true,
 "name": &"walk",
@@ -42,9 +32,9 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pjtqo"]
-size = Vector2(32, 3)
+size = Vector2(32, 4.5)
 
-[node name="Node2D" type="Node2D" unique_id=25196000]
+[node name="grunt" type="Node2D" unique_id=25196000]
 
 [node name="grunts" type="CharacterBody2D" parent="." unique_id=1048911769 groups=["enemies", "pitDeath"]]
 position = Vector2(264, 119)
@@ -56,7 +46,7 @@ script = ExtResource("1_ibh7n")
 position = Vector2(15, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="grunts" unique_id=2094696815]
-position = Vector2(0, 11.5)
+position = Vector2(0, 12.5)
 shape = SubResource("RectangleShape2D_ibh7n")
 
 [node name="hitbox" type="Area2D" parent="grunts" unique_id=1841916283]
@@ -64,19 +54,21 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="grunts/hitbox" unique_id=604840913]
-position = Vector2(0, 9)
+position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_gstte")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="grunts" unique_id=1616573783]
-scale = Vector2(0.390625, 0.4140625)
-sprite_frames = SubResource("SpriteFrames_vc17m")
-animation = &"death"
-frame_progress = 0.69319916
+texture_filter = 1
+position = Vector2(-9.536743e-07, 9.187502)
+scale = Vector2(1.4759114, 1.3177083)
+sprite_frames = SubResource("SpriteFrames_f1yk7")
+animation = &"walk"
+frame_progress = 0.535266
 
 [node name="head hurtbox" type="Area2D" parent="grunts" unique_id=30743745 groups=["enemyHead"]]
 collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="grunts/head hurtbox" unique_id=1452623857]
-position = Vector2(0, -9.5)
+position = Vector2(0, -3.75)
 shape = SubResource("RectangleShape2D_pjtqo")

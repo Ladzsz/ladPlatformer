@@ -18,7 +18,9 @@ func take_damage(amount: int):
 		die()
 
 func die(): 
-	$AnimatedSprite2D.play("death")
+	if $AnimatedSprite2D.sprite_frames.has_animation("death"):
+		$AnimatedSprite2D.play("death")
+		
 	modulate = Color.RED
 	var tween = create_tween()
 	tween.tween_property(self, "scale", Vector2.ZERO, 0.2)

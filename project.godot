@@ -15,6 +15,12 @@ run/main_scene="uid://bmvpepk5q7yl0"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=1080
+window/size/viewport_height=300
+window/size/mode=3
+
 [global_group]
 
 enemies=""
@@ -29,3 +35,4 @@ enemyHead=""
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+2d/snap/snap_2d_transforms_to_pixel=true
