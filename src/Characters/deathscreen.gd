@@ -12,4 +12,4 @@ func _on_quit_pressed() -> void:
 
 func _on_respawn_pressed() -> void:
 	get_tree().paused = false
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file(Gamedata.checkpoint)

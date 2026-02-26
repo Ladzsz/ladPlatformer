@@ -15,6 +15,11 @@ run/main_scene="uid://bmvpepk5q7yl0"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Gamedata="*uid://vyfk4h8li68i"
+BgMusic="*uid://dheqa4nse0g2"
+
 [display]
 
 window/size/viewport_width=1080

@@ -4,6 +4,7 @@ extends "res://src/Characters/characters.gd"
 
 var direction = 1
 var is_dead = false
+@onready var sprite = $AnimatedSprite2D
 
 func _ready():
 	max_health = 100
@@ -29,5 +30,11 @@ func _physics_process(delta: float) -> void:
 		
 	super._physics_process(delta)
 	velocity.x = direction * enemySpeed
+	
+	if velocity.x < 0:
+		sprite.flip_h = false  #face left
+	elif velocity.x > 0:
+		sprite.flip_h = true  #face right
+		
 	$AnimatedSprite2D.play("walk")
 	move_and_slide()	

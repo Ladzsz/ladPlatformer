@@ -128,7 +128,6 @@ limit_right = 2880
 limit_bottom = 560
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Hero" unique_id=850999100]
-visible = false
 
 [node name="Control" type="Control" parent="Hero/CanvasLayer" unique_id=1564071696 groups=["death_screen"]]
 layout_mode = 3

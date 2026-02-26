@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dheqa4nse0g2"]
+
+[ext_resource type="AudioStream" uid="uid://6dna4wgp0vt2" path="res://Music/djlofi-pixel-dreams-259187.mp3" id="1_utef3"]
+
+[node name="Backround Music" type="Node2D" unique_id=1531758061]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="." unique_id=399441845]
+stream = ExtResource("1_utef3")
+autoplay = true
