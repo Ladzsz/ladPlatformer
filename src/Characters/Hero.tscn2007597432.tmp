@@ -96,35 +96,37 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fixp7"]
 size = Vector2(18.999994, 2.5000002)
 
-[node name="Hero" type="CharacterBody2D" unique_id=885076994 groups=["pitDeath"]]
+[node name="Hero" type="Node2D" unique_id=1984496537]
+
+[node name="Hero" type="CharacterBody2D" parent="." unique_id=630310517 groups=["pitDeath"]]
 position = Vector2(90, -137)
 scale = Vector2(3, 3)
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_ei1ut")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=987362500]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hero" unique_id=1638423963]
 position = Vector2(52.333344, 3.583332)
 shape = SubResource("RectangleShape2D_ei1ut")
 debug_color = Color(0.50541544, 3.85046e-07, 0.2900922, 0.41960785)
 
-[node name="main hitbox" type="Area2D" parent="." unique_id=49566781]
+[node name="main hitbox" type="Area2D" parent="Hero" unique_id=300986151]
 position = Vector2(-0.33333206, 0)
 collision_layer = 2
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="main hitbox" unique_id=70372627]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hero/main hitbox" unique_id=876186418]
 position = Vector2(52.500004, 3.5)
 shape = SubResource("RectangleShape2D_vuohq")
 debug_color = Color(0.7436938, 0.46455193, 0, 0.41960785)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1773486124]
+[node name="Camera2D" type="Camera2D" parent="Hero" unique_id=418353753]
 limit_left = -1120
 limit_top = 0
 limit_right = 2880
 limit_bottom = 560
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=958930353]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hero" unique_id=96841667]
 texture_filter = 1
 position = Vector2(52.666664, 3.999999)
 scale = Vector2(1.34375, 1.5520835)
@@ -133,14 +135,14 @@ animation = &"walk"
 frame_progress = 0.48909563
 speed_scale = 0.1
 
-[node name="jump stomp" type="Area2D" parent="." unique_id=1635981201]
+[node name="jump stomp" type="Area2D" parent="Hero" unique_id=1792235675]
 collision_layer = 2
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="jump stomp" unique_id=1402090262]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hero/jump stomp" unique_id=876462571]
 position = Vector2(52.333332, 16.000002)
 shape = SubResource("RectangleShape2D_fixp7")
 
-[connection signal="body_entered" from="main hitbox" to="." method="_on_area_2d_body_entered"]
-[connection signal="area_entered" from="jump stomp" to="." method="_on_jump_stomp_area_entered"]
-[connection signal="body_entered" from="jump stomp" to="." method="_on_jump_stomp_body_entered"]
+[connection signal="body_entered" from="Hero/main hitbox" to="Hero" method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="Hero/jump stomp" to="Hero" method="_on_jump_stomp_area_entered"]
+[connection signal="body_entered" from="Hero/jump stomp" to="Hero" method="_on_jump_stomp_body_entered"]

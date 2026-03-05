@@ -2,13 +2,11 @@ extends Characters
 
 #overiding die from characters
 func die():
-	print(get_tree().get_nodes_in_group("death_screen"))
 	modulate = Color.RED
 	var tween = create_tween()
 	tween.tween_property(self, "scale", Vector2.ZERO, 0.2)
 	await tween.finished
-	get_tree().paused = true
-	get_tree().get_first_node_in_group("death_screen").visible = true
+	died.emit()
 
 #user input
 func getInput():

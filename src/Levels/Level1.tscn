@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bmvpepk5q7yl0"]
 
+[ext_resource type="Script" uid="uid://bddmadmk5400y" path="res://src/Levels/Level1.gd" id="1_5c1w0"]
 [ext_resource type="PackedScene" uid="uid://o7ga3rnhsp7w" path="res://src/Characters/Hero.tscn" id="2_4ckwk"]
 [ext_resource type="PackedScene" uid="uid://dfow60uh0dsv5" path="res://src/Characters/grunts.tscn" id="3_tts0k"]
 [ext_resource type="Script" uid="uid://c5bmao4sga0hy" path="res://src/Levels/deathpits.gd" id="4_4ckwk"]
@@ -32,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://jjay1ov83r3o" path="res://newassets/kenney_pixel-platformer/Tiles/tile_0097.png" id="29_extod"]
 [ext_resource type="Texture2D" uid="uid://c6713l08gbp38" path="res://newassets/kenney_pixel-platformer/Tiles/Backgrounds/tile_0004.png" id="30_extod"]
 [ext_resource type="Script" uid="uid://dgcpjsjh2celb" path="res://src/Levels/sign_teleport.gd" id="38_ma7pf"]
+[ext_resource type="PackedScene" uid="uid://mswxilpcmxu8" path="res://src/UI/death_screen.tscn" id="40_dv2ny"]
 [ext_resource type="Texture2D" uid="uid://bkf6eneb2olb7" path="res://newassets/kenney_pixel-platformer/Tiles/tile_0122.png" id="52_npub2"]
 [ext_resource type="Texture2D" uid="uid://bhemg0cee2re8" path="res://newassets/kenney_pixel-platformer/Tiles/tile_0002.png" id="117_dkbq7"]
 [ext_resource type="Texture2D" uid="uid://c46luq57bqg73" path="res://newassets/kenney_pixel-platformer/Tiles/tile_0021.png" id="119_imusj"]
@@ -296,6 +298,7 @@ size = Vector2(74, 72.5)
 
 [node name="Level 1" type="Node2D" unique_id=159299005]
 position = Vector2(0, 5)
+script = ExtResource("1_5c1w0")
 
 [node name="Deathpit" type="Area2D" parent="." unique_id=759701844]
 position = Vector2(0, 369)
@@ -366,6 +369,8 @@ next_level = "res://src/Levels/Level2.tscn"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SignTeleport" unique_id=618938870]
 position = Vector2(2843, 292.25)
 shape = SubResource("RectangleShape2D_extod")
+
+[node name="DeathScreen" parent="." unique_id=1375250779 instance=ExtResource("40_dv2ny")]
 
 [connection signal="body_entered" from="Deathpit" to="Deathpit" method="_on_body_entered"]
 [connection signal="body_entered" from="SignTeleport" to="SignTeleport" method="_on_body_entered"]

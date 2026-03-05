@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name Characters
 
+signal died 
+
 #parent script to all characters
 var baseSpeed = Vector2(300, 1000)
 var enemySpeed = 100
