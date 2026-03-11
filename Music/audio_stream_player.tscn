@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://hmmu8y5rufv1"]
+
+[ext_resource type="AudioStream" uid="uid://cjr5cakp1jsq2" path="res://Music/freesound_community-umph-47201.mp3" id="1_wfewh"]
+
+[node name="Character death sound" type="AudioStreamPlayer" unique_id=1318166943]
+stream = ExtResource("1_wfewh")

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://k4c1m84igsli"]
+
+[ext_resource type="AudioStream" uid="uid://dt6wmyjw15ap2" path="res://Music/universfield-balloon-burst-383750.mp3" id="1_edsj8"]
+
+[node name="PlayerDeathSound" type="AudioStreamPlayer2D" unique_id=317476356]
+stream = ExtResource("1_edsj8")
+volume_db = 5.0

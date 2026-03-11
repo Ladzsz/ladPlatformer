@@ -1,5 +1,23 @@
 extends Characters
 
+#stomp sound
+func play_pop():
+	var player = preload("res://Music/stomped_on_sound.tscn").instantiate()
+	add_child(player)
+	player.play()
+	
+#death sound
+func play_death_sound():
+	var player = preload("res://Music/player_death_sound.tscn").instantiate()
+	add_child(player)
+	player.play()
+	
+#jump sound
+func play_jump_sound():
+	var player = preload("res://Music/pixel_jump.tscn").instantiate()
+	add_child(player)
+	player.play()	
+
 #overiding die from characters
 func die():
 	modulate = Color.RED
@@ -18,6 +36,7 @@ func getInput():
 	# Handle Jump
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		play_jump_sound()
 
 	# Flip sprite
 	if velocity.x < 0:
@@ -40,10 +59,12 @@ func getInput():
 #players damage box
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies") and velocity.y <= 0:
+		play_death_sound()
 		take_damage(100)
 
 func _on_jump_stomp_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemyHead") and velocity.y >= 0:
+		play_pop()
 		area.get_parent().take_damage(100)
 		velocity.y = -250
 

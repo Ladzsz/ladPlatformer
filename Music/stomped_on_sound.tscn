@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://d3gf680knlr2y"]
+
+[ext_resource type="AudioStream" uid="uid://dp151l8efjejv" path="res://Music/universfield-wine-cork-pop-352295.mp3" id="1_2tcbk"]
+
+[node name="Stomped on sound" type="AudioStreamPlayer" unique_id=1252750343]
+stream = ExtResource("1_2tcbk")

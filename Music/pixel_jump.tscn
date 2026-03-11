@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dhlwb8idypr8s"]
+
+[ext_resource type="AudioStream" uid="uid://cx7oc3onrmnp1" path="res://Music/lumora_studios-pixel-jump-319167.mp3" id="1_a13ov"]
+
+[node name="pixel jump" type="AudioStreamPlayer2D" unique_id=559130559]
+stream = ExtResource("1_a13ov")
