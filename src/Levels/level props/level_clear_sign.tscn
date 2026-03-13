@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b6p07qegk1xdy"]
+
+[ext_resource type="Script" uid="uid://dgcpjsjh2celb" path="res://src/Levels/level props/sign_teleport.gd" id="1_jjo1r"]
+[ext_resource type="Texture2D" uid="uid://blh2sh8g2pef5" path="res://newassets/kenney_pixel-platformer/Tiles/tile_0085.png" id="1_uq82d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjo1r"]
+
+[node name="level clear sign" type="Area2D" unique_id=1049310422]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_jjo1r")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1271271332]
+texture = ExtResource("1_uq82d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=92884277]
+shape = SubResource("RectangleShape2D_jjo1r")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

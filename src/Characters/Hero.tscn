@@ -96,7 +96,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fixp7"]
 size = Vector2(18.999994, 2.5000002)
 
-[node name="Hero" type="CharacterBody2D" unique_id=885076994 groups=["pitDeath"]]
+[node name="Hero" type="CharacterBody2D" unique_id=885076994 groups=["pitDeath", "player"]]
 position = Vector2(90, -137)
 scale = Vector2(3, 3)
 collision_layer = 2

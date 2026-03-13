@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bd2r6hm6hpor1"]
+
+[ext_resource type="Script" uid="uid://dfnj5p5wrj8kb" path="res://src/Levels/level_2.gd" id="1_6rtw7"]
+[ext_resource type="Texture2D" uid="uid://bdhyarlye2g6" path="res://newassets/kenney_pixel-platformer/Tiles/tile_0024.png" id="1_m2sm1"]
+[ext_resource type="Texture2D" uid="uid://cqi40c26sk3ul" path="res://newassets/kenney_pixel-platformer/Tiles/tile_0025.png" id="2_6rtw7"]
+[ext_resource type="PackedScene" uid="uid://o7ga3rnhsp7w" path="res://src/Characters/Hero.tscn" id="3_r8c1v"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1gqea"]
+texture = ExtResource("1_m2sm1")
+texture_region_size = Vector2i(18, 18)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, 9, 9, 9, 9, -9, -9, -9)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0gbco"]
+texture = ExtResource("2_6rtw7")
+texture_region_size = Vector2i(18, 18)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -3.057598, -9, 9, 9, 9, 9, -9, -9, -9)
+
+[sub_resource type="TileSet" id="TileSet_2sxkx"]
+tile_size = Vector2i(18, 18)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_1gqea")
+sources/1 = SubResource("TileSetAtlasSource_0gbco")
+
+[node name="Level2" type="Node2D" unique_id=1985770228]
+script = ExtResource("1_6rtw7")
+camera_bottom = 2200
+
+[node name="TileMap" type="TileMap" parent="." unique_id=1114442477]
+scale = Vector2(4, 4)
+tile_set = SubResource("TileSet_2sxkx")
+format = 2
+layer_0/tile_data = PackedInt32Array(1966080, 1, 0, 1966081, 1, 0, 1966082, 1, 0)
+
+[node name="PlayerContainer" type="Node2D" parent="." unique_id=1111605954]
+
+[node name="Hero" parent="PlayerContainer" unique_id=885076994 instance=ExtResource("3_r8c1v")]
+position = Vector2(-132, 477)
