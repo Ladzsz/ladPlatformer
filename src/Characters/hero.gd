@@ -29,7 +29,7 @@ func die():
 #user input
 func getInput():
 	
-	const JUMP_VELOCITY = -450.0
+	const JUMP_VELOCITY = -575.0
 	
 	velocity.x = Input.get_axis("ui_left", "ui_right") * baseSpeed.x
 	
