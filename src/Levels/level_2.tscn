@@ -24,6 +24,8 @@
 [ext_resource type="Texture2D" uid="uid://covlwg5vsvjsf" path="res://newassets/kenney_pixel-platformer/Tiles/tile_0040.png" id="17_o5bjt"]
 [ext_resource type="Texture2D" uid="uid://c6713l08gbp38" path="res://newassets/kenney_pixel-platformer/Tiles/Backgrounds/tile_0004.png" id="17_oowwy"]
 [ext_resource type="Texture2D" uid="uid://d3b6rqkml2q24" path="res://newassets/kenney_pixel-platformer/Tiles/Backgrounds/tile_0005.png" id="18_ewg51"]
+[ext_resource type="Script" uid="uid://c5bmao4sga0hy" path="res://src/Levels/deathpits.gd" id="25_mpxcb"]
+[ext_resource type="PackedScene" uid="uid://mswxilpcmxu8" path="res://src/UI/death_screen.tscn" id="26_0j1l1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1gqea"]
 texture = ExtResource("1_m2sm1")
@@ -182,6 +184,12 @@ sources/21 = SubResource("TileSetAtlasSource_oowwy")
 sources/22 = SubResource("TileSetAtlasSource_ewg51")
 sources/23 = SubResource("TileSetAtlasSource_vfh7l")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0j1l1"]
+size = Vector2(4251.5, 511.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6lyve"]
+size = Vector2(59, 2577)
+
 [node name="Level2" type="Node2D" unique_id=1985770228]
 script = ExtResource("1_6rtw7")
 camera_right = 2200
@@ -197,4 +205,35 @@ layer_1/name = "BackroundL"
 [node name="PlayerContainer" type="Node2D" parent="." unique_id=1111605954]
 
 [node name="Hero" parent="PlayerContainer" unique_id=885076994 instance=ExtResource("3_r8c1v")]
-position = Vector2(-45, 2102)
+position = Vector2(-46, 2102)
+
+[node name="Level area2ds" type="Node2D" parent="." unique_id=1859590548]
+
+[node name="Deathpit" type="Area2D" parent="Level area2ds" unique_id=1478680636]
+position = Vector2(300, 1938)
+collision_mask = 6
+script = ExtResource("25_mpxcb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level area2ds/Deathpit" unique_id=511296868]
+position = Vector2(753.25, 756.625)
+shape = SubResource("RectangleShape2D_0j1l1")
+
+[node name="invisible wall" type="StaticBody2D" parent="Level area2ds" unique_id=1444700579]
+position = Vector2(-220, 1069)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level area2ds/invisible wall" unique_id=1834411742]
+position = Vector2(182.5, 83)
+shape = SubResource("RectangleShape2D_6lyve")
+
+[node name="invisible wall2" type="StaticBody2D" parent="Level area2ds" unique_id=1037086894]
+position = Vector2(2255, 1061)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level area2ds/invisible wall2" unique_id=1128851677]
+position = Vector2(182.5, 83)
+shape = SubResource("RectangleShape2D_6lyve")
+
+[node name="Ui items" type="Node2D" parent="." unique_id=876473278]
+
+[node name="DeathScreen" parent="Ui items" unique_id=1395296123 instance=ExtResource("26_0j1l1")]
+
+[connection signal="body_entered" from="Level area2ds/Deathpit" to="Level area2ds/Deathpit" method="_on_body_entered"]
