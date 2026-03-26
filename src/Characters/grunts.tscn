@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://c8hj1bekd52ls" path="res://newassets/kenney_pixel-platformer/Tilemap/tilemap-characters.png" id="2_ibh7n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ibh7n"]
-size = Vector2(34, 25)
+size = Vector2(24, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gstte"]
-size = Vector2(34, 26)
+size = Vector2(29, 21)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gstte"]
 atlas = ExtResource("2_ibh7n")
@@ -32,7 +32,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pjtqo"]
-size = Vector2(32, 4.5)
+size = Vector2(32, 5)
 
 [node name="grunt" type="Node2D" unique_id=25196000]
 

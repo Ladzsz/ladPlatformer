@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://c5os83ndwvep3"]
+
+[ext_resource type="Texture2D" uid="uid://bs6i21g0d1ko4" path="res://newassets/custom-enemies/sandShrug/sandshrug (1).png" id="1_2bbnp"]
+[ext_resource type="Script" uid="uid://dofgoo03i1pl6" path="res://src/Characters/grunts.gd" id="1_cbkhh"]
+[ext_resource type="Texture2D" uid="uid://brecfgtj4vxb1" path="res://newassets/custom-enemies/sandShrug/sandshrug-walk1.png" id="2_cbkhh"]
+[ext_resource type="Texture2D" uid="uid://jkom425sdmnf" path="res://newassets/custom-enemies/sandShrug/sandshrug-walk2.png" id="3_8ho0c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ibh7n"]
+size = Vector2(24, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gstte"]
+size = Vector2(29, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pjtqo"]
+size = Vector2(32, 4.5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cbkhh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2bbnp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_cbkhh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8ho0c")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="SandShrug" type="Node2D" unique_id=25196000]
+
+[node name="SandShrug" type="CharacterBody2D" parent="." unique_id=1048911769 groups=["enemies", "pitDeath"]]
+position = Vector2(264, 119)
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_cbkhh")
+
+[node name="RayCast2D" type="RayCast2D" parent="SandShrug" unique_id=984294588]
+position = Vector2(15, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SandShrug" unique_id=2094696815]
+position = Vector2(-1, 14)
+shape = SubResource("RectangleShape2D_ibh7n")
+
+[node name="hitbox" type="Area2D" parent="SandShrug" unique_id=1841916283]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SandShrug/hitbox" unique_id=604840913]
+position = Vector2(-1.5, 12)
+shape = SubResource("RectangleShape2D_gstte")
+debug_color = Color(0.99178785, 0, 0.2670584, 0.41960785)
+
+[node name="head hurtbox" type="Area2D" parent="SandShrug" unique_id=30743745 groups=["enemyHead"]]
+position = Vector2(0, 5)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SandShrug/head hurtbox" unique_id=1452623857]
+position = Vector2(0, -3.75)
+shape = SubResource("RectangleShape2D_pjtqo")
+debug_color = Color(0.17746621, 0.64199346, 0, 0.41960785)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SandShrug" unique_id=223818079]
+position = Vector2(-3.999998, 12.999998)
+scale = Vector2(1.84375, 2.03125)
+sprite_frames = SubResource("SpriteFrames_cbkhh")
+animation = &"walk"

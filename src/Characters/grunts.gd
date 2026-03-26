@@ -17,7 +17,6 @@ func die():
 func flip_ray():
 	# Flip the RayCast's horizontal position so it stays in front of the enemy
 	ground_ray.position.x = abs(ground_ray.position.x) * direction
-	ground_ray.target_position.x = abs(ground_ray.target_position.x) * direction
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
