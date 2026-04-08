@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://cvu76cti6fh8q"]
+
+[ext_resource type="Texture2D" uid="uid://ntvpjklg8fuy" path="res://newassets/custom-enemies/Poda/attack/Poda-shoot-left.png" id="1_qgy17"]
+[ext_resource type="Texture2D" uid="uid://cdmx5u6cvb35t" path="res://newassets/custom-enemies/Poda/attack/Poda-shoot-right.png" id="2_1ttcn"]
+[ext_resource type="Texture2D" uid="uid://bkv2jajhrslp8" path="res://newassets/custom-enemies/Poda/attack/Poda-shoot-left2.png" id="2_s25va"]
+[ext_resource type="Texture2D" uid="uid://c1bg4edyq7ay" path="res://newassets/custom-enemies/Poda/attack/Poda-shoot-left3.png" id="3_kyefd"]
+[ext_resource type="Texture2D" uid="uid://bsfhepp77gq4u" path="res://newassets/custom-enemies/Poda/idle/Poda.png" id="3_qnvro"]
+[ext_resource type="Texture2D" uid="uid://do72ol3sy5x6p" path="res://newassets/custom-enemies/Poda/idle/Poda-blink1.png" id="4_saac5"]
+[ext_resource type="Texture2D" uid="uid://bi2oxo07vttl2" path="res://newassets/custom-enemies/Poda/attack/Poda-shoot-right2.png" id="5_77nxa"]
+[ext_resource type="Texture2D" uid="uid://hlcbm44f0hsx" path="res://newassets/custom-enemies/Poda/idle/Poda-blink2.png" id="5_n3dqm"]
+[ext_resource type="Texture2D" uid="uid://dp4f6nwmmvj58" path="res://newassets/custom-enemies/Poda/attack/Poda-shoot-right3.png" id="6_b5gjs"]
+[ext_resource type="Texture2D" uid="uid://dcuyi2wywcc7d" path="res://newassets/custom-enemies/Poda/look/poda-look-left.png" id="6_kwrc0"]
+[ext_resource type="Texture2D" uid="uid://5ntbesagsw2m" path="res://newassets/custom-enemies/Poda/look/poda-left-blink1.png" id="7_qnvro"]
+[ext_resource type="Texture2D" uid="uid://x30ol2lrxqcm" path="res://newassets/custom-enemies/Poda/look/Poda-look-right.png" id="7_s25va"]
+[ext_resource type="Texture2D" uid="uid://cfmobfx41k2g" path="res://newassets/custom-enemies/Poda/look/poda-right-blink1.png" id="9_saac5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kyefd"]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": ExtResource("1_qgy17")
+}, {
+"duration": 3.0,
+"texture": ExtResource("2_s25va")
+}, {
+"duration": 5.0,
+"texture": ExtResource("3_kyefd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_s25va")
+}],
+"loop": true,
+"name": &"attack-left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 5.0,
+"texture": ExtResource("2_1ttcn")
+}, {
+"duration": 3.0,
+"texture": ExtResource("5_77nxa")
+}, {
+"duration": 5.0,
+"texture": ExtResource("6_b5gjs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_77nxa")
+}],
+"loop": true,
+"name": &"attack-right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 20.0,
+"texture": ExtResource("3_qnvro")
+}, {
+"duration": 0.5,
+"texture": ExtResource("4_saac5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_n3dqm")
+}, {
+"duration": 0.5,
+"texture": ExtResource("4_saac5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qnvro")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 20.0,
+"texture": ExtResource("6_kwrc0")
+}, {
+"duration": 0.5,
+"texture": ExtResource("7_qnvro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_n3dqm")
+}, {
+"duration": 0.5,
+"texture": ExtResource("7_qnvro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kwrc0")
+}],
+"loop": true,
+"name": &"look-left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 20.0,
+"texture": ExtResource("7_s25va")
+}, {
+"duration": 0.5,
+"texture": ExtResource("9_saac5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_n3dqm")
+}, {
+"duration": 0.5,
+"texture": ExtResource("9_saac5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_s25va")
+}],
+"loop": true,
+"name": &"look-right",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_77nxa"]
+size = Vector2(9, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b5gjs"]
+size = Vector2(10, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_psj54"]
+size = Vector2(11, 6)
+
+[node name="Poda" type="CharacterBody2D" unique_id=694203960 groups=["enemies", "pitDeath"]]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1534098918]
+sprite_frames = SubResource("SpriteFrames_kyefd")
+animation = &"attack-right"
+frame_progress = 0.9846831
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=217223533]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_77nxa")
+
+[node name="head hurtbox" type="Area2D" parent="." unique_id=211009147 groups=["enemyHead"]]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="head hurtbox" unique_id=386496854]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_b5gjs")
+debug_color = Color(0, 0.6416755, 0.33550185, 0.41960785)
+
+[node name="hitbox" type="Area2D" parent="." unique_id=1512081161]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1889365479]
+position = Vector2(-0.5, 1)
+shape = SubResource("RectangleShape2D_psj54")
+debug_color = Color(0.99178785, 0, 0.2670584, 0.41960785)
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=396430811]
+target_position = Vector2(-64, 0)

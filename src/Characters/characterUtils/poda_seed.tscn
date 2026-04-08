@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://cys2viurtu21q"]
+
+[ext_resource type="Texture2D" uid="uid://ux87nkkypqsc" path="res://newassets/custom-enemies/Poda/SeedBullet/podaSeedLeft.png" id="1_5rcfh"]
+[ext_resource type="Texture2D" uid="uid://bhvbsamiogl17" path="res://newassets/custom-enemies/Poda/SeedBullet/podaSeedRight.png" id="2_jy5v3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rgv7i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5rcfh")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jy5v3")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_xta65"]
+a = Vector2(-8, 0)
+b = Vector2(12, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gl1u2"]
+size = Vector2(13, 2.5)
+
+[node name="PodaSeed" type="Area2D" unique_id=634451563 groups=["enemies"]]
+position = Vector2(-8, -5)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=262435626]
+position = Vector2(10, 6)
+sprite_frames = SubResource("SpriteFrames_rgv7i")
+animation = &"right"
+
+[node name="hitbox" type="Area2D" parent="." unique_id=1179417790]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1312087919]
+position = Vector2(8, 5)
+shape = SubResource("SegmentShape2D_xta65")
+debug_color = Color(0.99178785, 0, 0.2670584, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1866251936]
+position = Vector2(8, 4.75)
+shape = SubResource("RectangleShape2D_gl1u2")
