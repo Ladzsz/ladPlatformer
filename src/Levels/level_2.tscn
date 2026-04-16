@@ -27,6 +27,7 @@
 [ext_resource type="Script" uid="uid://c5bmao4sga0hy" path="res://src/Levels/deathpits.gd" id="25_mpxcb"]
 [ext_resource type="PackedScene" uid="uid://mswxilpcmxu8" path="res://src/UI/death_screen.tscn" id="26_0j1l1"]
 [ext_resource type="PackedScene" uid="uid://c5os83ndwvep3" path="res://src/Characters/sand_shrug.tscn" id="27_6lyve"]
+[ext_resource type="PackedScene" uid="uid://cvu76cti6fh8q" path="res://src/Characters/poda.tscn" id="28_o5bjt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1gqea"]
 texture = ExtResource("1_m2sm1")
@@ -207,7 +208,7 @@ layer_1/tile_data = PackedInt32Array(1900544, 6, 0, 1900545, 6, 0, 1900546, 6, 0
 [node name="PlayerContainer" type="Node2D" parent="." unique_id=1111605954]
 
 [node name="Hero" parent="PlayerContainer" unique_id=885076994 instance=ExtResource("3_r8c1v")]
-position = Vector2(4, 2033)
+position = Vector2(1685, 1785.0001)
 
 [node name="Level area2ds" type="Node2D" parent="." unique_id=1859590548]
 
@@ -243,5 +244,9 @@ visible = false
 
 [node name="SandShrug" parent="EnemyContainer" unique_id=1924047026 instance=ExtResource("27_6lyve")]
 position = Vector2(625, 1904)
+
+[node name="Poda" parent="EnemyContainer" unique_id=694203960 instance=ExtResource("28_o5bjt")]
+position = Vector2(1049, 1594)
+scale = Vector2(2.5, 2.5)
 
 [connection signal="body_entered" from="Level area2ds/Deathpit" to="Level area2ds/Deathpit" method="_on_body_entered"]

@@ -28,7 +28,8 @@ func die():
 	tween.tween_property(self, "scale", Vector2.ZERO, 0.2)
 	await tween.finished
 	queue_free()
-
-func _physics_process(delta: float) -> void:
-	velocity.y += baseGravity * delta
+	
+func apply_gravity(delta):
+	if not is_on_floor():
+		velocity += get_gravity() * delta	
 	

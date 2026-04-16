@@ -70,5 +70,5 @@ func _on_jump_stomp_area_entered(area: Area2D) -> void:
 
 func _physics_process(delta: float) -> void:
 	getInput()
-	super._physics_process(delta)
+	apply_gravity(delta)
 	move_and_slide()

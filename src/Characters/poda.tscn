@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cvu76cti6fh8q"]
 
+[ext_resource type="Script" uid="uid://c3fe8uttl4eap" path="res://src/Characters/poda.gd" id="1_kyefd"]
 [ext_resource type="Texture2D" uid="uid://ntvpjklg8fuy" path="res://newassets/custom-enemies/Poda/attack/Poda-shoot-left.png" id="1_qgy17"]
 [ext_resource type="Texture2D" uid="uid://cdmx5u6cvb35t" path="res://newassets/custom-enemies/Poda/attack/Poda-shoot-right.png" id="2_1ttcn"]
 [ext_resource type="Texture2D" uid="uid://bkv2jajhrslp8" path="res://newassets/custom-enemies/Poda/attack/Poda-shoot-left2.png" id="2_s25va"]
@@ -121,11 +122,12 @@ size = Vector2(10, 2)
 size = Vector2(11, 6)
 
 [node name="Poda" type="CharacterBody2D" unique_id=694203960 groups=["enemies", "pitDeath"]]
+script = ExtResource("1_kyefd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1534098918]
 sprite_frames = SubResource("SpriteFrames_kyefd")
-animation = &"attack-right"
-frame_progress = 0.9846831
+animation = &"look-right"
+frame_progress = 0.8828574
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=217223533]
 position = Vector2(0, 7)
@@ -151,3 +153,4 @@ debug_color = Color(0.99178785, 0, 0.2670584, 0.41960785)
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=396430811]
 target_position = Vector2(-64, 0)
+collision_mask = 2

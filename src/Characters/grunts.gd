@@ -27,7 +27,7 @@ func _physics_process(delta: float) -> void:
 		direction *= -1
 		flip_ray()
 		
-	super._physics_process(delta)
+	apply_gravity(delta)
 	velocity.x = direction * enemySpeed
 	
 	if velocity.x < 0:
