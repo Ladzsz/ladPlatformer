@@ -1,19 +1,10 @@
 [gd_scene format=3 uid="uid://cys2viurtu21q"]
 
-[ext_resource type="Texture2D" uid="uid://ux87nkkypqsc" path="res://newassets/custom-enemies/Poda/SeedBullet/podaSeedLeft.png" id="1_5rcfh"]
 [ext_resource type="Script" uid="uid://bibxpiweseubm" path="res://src/Characters/characterUtils/poda_seed.gd" id="1_jy5v3"]
 [ext_resource type="Texture2D" uid="uid://bhvbsamiogl17" path="res://newassets/custom-enemies/Poda/SeedBullet/podaSeedRight.png" id="2_jy5v3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rgv7i"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_5rcfh")
-}],
-"loop": true,
-"name": &"left",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_jy5v3")
