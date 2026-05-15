@@ -208,7 +208,7 @@ layer_1/tile_data = PackedInt32Array(1900544, 6, 0, 1900545, 6, 0, 1900546, 6, 0
 [node name="PlayerContainer" type="Node2D" parent="." unique_id=1111605954]
 
 [node name="Hero" parent="PlayerContainer" unique_id=885076994 instance=ExtResource("3_r8c1v")]
-position = Vector2(1685, 1785.0001)
+position = Vector2(952, 1514.0001)
 
 [node name="Level area2ds" type="Node2D" parent="." unique_id=1859590548]
 

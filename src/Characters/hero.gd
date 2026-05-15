@@ -21,6 +21,7 @@ func play_jump_sound():
 #overiding die from characters
 func die():
 	modulate = Color.RED
+	play_death_sound()
 	var tween = create_tween()
 	tween.tween_property(self, "scale", Vector2.ZERO, 0.2)
 	await tween.finished
@@ -59,7 +60,6 @@ func getInput():
 #players damage box
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies") and velocity.y <= 0:
-		play_death_sound()
 		take_damage(100)
 
 func _on_jump_stomp_area_entered(area: Area2D) -> void:
