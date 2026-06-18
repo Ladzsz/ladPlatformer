@@ -4,15 +4,11 @@ extends Area2D
 var direction := 1
 
 # direciton control
-func _ready() -> void:
-	if player.global_position.x < global_position.x:
-		direction = -1
-		$AnimatedSprite2D.flip_h=direction <0
-	else:
-		direction = 1
+func set_direction(dir):
+	direction = dir
+	$AnimatedSprite2D.flip_h = direction < 0
 
 # speed
-
 func _process(delta: float) -> void:
 	global_position.x += direction * speed * delta
 	

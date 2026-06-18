@@ -46,3 +46,4 @@ position = Vector2(8, 4.75)
 shape = SubResource("RectangleShape2D_gl1u2")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
